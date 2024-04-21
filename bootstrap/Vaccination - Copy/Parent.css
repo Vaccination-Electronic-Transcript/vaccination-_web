@@ -1,0 +1,141 @@
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #42ade8;
+}
+.logo-container {
+    text-align: center;
+}
+
+.container {
+    height: 70%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .forms {
+    display: grid;
+    width: 60%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10%;
+}
+
+.formView {
+    color: #000;
+    background-color: #37647e;
+    padding: 20px 40px 40px;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.inps {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px 7rem;
+    align-items: center;
+}
+
+.vaccination-form h1 {
+    text-align: left;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 5px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.input-group label {
+    margin: 0;
+    font-size: 14px;
+    display: inline-block;
+    margin-inline-start: 5px;
+    font-weight: 600;
+}
+
+.input-group input[type="text"],
+.input-group select {
+    background-color: #2c4a5a;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+}
+
+.input-group select {
+    width: 100%;
+    background-color: transparent;
+    border-bottom: 5px solid #2c4a5a;
+    border-radius: 0;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Styling the Back and Next buttons */
+.form-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0rem;
+    margin-top: 4rem;
+}
+
+.form-navigation button {
+    padding: 5px 30px;
+    margin-left: 1px;
+    margin-right: 45px;
+    border: none;
+    border-radius: 15px;
+    background-color: #37647e;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-navigation button:hover {
+    background-color: #e8f0fe;
+}
+
+/* Ensure select dropdowns have the white arrow */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(data:image/svg+xml;charset=US-ASCII,<svg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d%3D%22M7%2010l5%205%205-5%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C/path%3E%0A%3C/svg%3E)
+        no-repeat right 10px center;
+    background-size: 12px;
+}
+
+/* Custom scrollbar for consistency */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
