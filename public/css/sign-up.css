@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9fbff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.logo h1 {
+  color: #1A7399;
+}
+
+h2 {
+  color: #175A77FC;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+label{
+  color: #175A77FC;
+  align-self: flex-start;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #016071;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+}
+
+#phone{
+  width: 203px;
+}
+
+.forgot-password {
+  float: right;
+  font-size: 12px;
+  color: #016071;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+select {
+  border: none;
+}
+
+button {
+  margin-top: 20px;
+  margin-left: 225px;
+  width: 150px;
+  padding: 12px;
+  background-color: #016071;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  margin-left: 10px;
+  margin-top: 10px;
+  align-self: flex-start;
+  color: #016071;
+  
+}
+
+a:hover {
+  text-decoration: underline;
+}

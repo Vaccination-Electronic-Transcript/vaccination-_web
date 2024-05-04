@@ -1,7 +1,12 @@
 @extends('child.layout')
+
 @section('content')
 
 <div class="container">
+    <div class="logo">
+        <img src="{{ asset('images/injection-15.png') }}" alt="Vaccination Logo">
+        <h1>vaccination</h1>
+    </div>
     <div class="row" style="margin:20px;">
         <div class="col-12">
             <div class="card">

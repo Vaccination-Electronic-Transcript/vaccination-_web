@@ -20,4 +20,9 @@ class Child extends Model
         'height',
         'address'
     ];
+    public function followUps()
+    {
+        return $this->hasMany(FollowUp::class, 'child_ssn', 'childSSN');
+    }
+
 }

@@ -55,7 +55,7 @@ class ChildController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'DOB' => 'required|date',
-            'gender' => 'required|in:male,female',
+            'gender' => 'required|in:male,female', 
             'weight' => 'required|numeric',
             'height' => 'required|numeric',
             'address' => 'nullable|string',

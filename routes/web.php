@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ParentsController;
+use App\Http\Controllers\VaccineController;
+use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\HomeController; //
 use App\Http\Controllers\adminauth\AuthenticatedSessionController;
 
 
@@ -22,15 +25,35 @@ use App\Http\Controllers\adminauth\AuthenticatedSessionController;
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('/vaccine', [VaccineController::class, 'index'])->name('Vaccine.index');
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('/child', [ChildController::class, 'index'])->name('child.index');
     Route::get('/parents', [ParentsController::class, 'index'])->name('parents.index');
+    Route::get('/vaccine', [VaccineController::class, 'index'])->name('vaccine.index');
+
     Route::get('/child/create', [ChildController::class, 'create'])->name('Child.create');
     Route::post('/child', [ChildController::class, 'store'])->name('Child.store');
     Route::get('/{child}', [ChildController::class, 'show'])->name('child.show');
     Route::get('/child/{id}/edit', [ChildController::class, 'edit'])->name('child.edit');
     Route::put('/child/{id}', [ChildController::class, 'update'])->name('child.update');
     Route::delete('/child/{id}', [ChildController::class, 'destroy'])->name('child.destroy');
+
+    Route::get('/vaccine/create', [VaccineController::class, 'create'])->name('vaccine.create');
+    Route::post('/vaccine', [VaccineController::class, 'store'])->name('vaccine.store');
+    Route::get('/{vaccine}', [VaccineController::class, 'show'])->name('vaccine.show');
+    Route::get('/vaccine/{id}/edit', [VaccineController::class, 'edit'])->name('vaccine.edit');
+    Route::put('/vaccine/{id}', [VaccineController::class, 'update'])->name('vaccine.update');
+    Route::delete('/vaccine/{id}', [VaccineController::class, 'destroy'])->name('vaccine.destroy');
+
+
+    Route::get('/followUp', [FollowUpController::class, 'index'])->name('followUp.index');
+    Route::get('/followUp/create', [FollowUpController::class, 'create'])->name('followUp.create');
+    Route::post('/followUp', [FollowUpController::class, 'store'])->name('followUp.store');
+    Route::get('/followUp/{followUp}', [FollowUpController::class, 'show'])->name('followUp.show');
+    Route::get('/followUp/{followUp}/edit', [FollowUpController::class, 'edit'])->name('followUp.edit');
+    Route::put('/followUp/{followUp}', 'FollowUpController@update')->name('followUp.update');
+    Route::delete('/followUp/{followUp}', [FollowUpController::class, 'destroy'])->name('followUp.destroy');
+
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])
         ->middleware('guest:admin')
         ->name('admin.login');
@@ -71,3 +94,4 @@ Route::get('/childinfo', function () {
 Route::get('/parentinfo', function () {
     return view('vaccination.parentsinfo');
 })->name('parents.information');
+
