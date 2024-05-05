@@ -45,6 +45,12 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::put('/vaccine/{id}', [VaccineController::class, 'update'])->name('vaccine.update');
     Route::delete('/vaccine/{id}', [VaccineController::class, 'destroy'])->name('vaccine.destroy');
 
+    Route::post('/parents/create', [ParentsController::class, 'create'])->name('parents.create');
+    Route::post('/parents', [ParentsController::class, 'store'])->name('parents.store');
+    Route::get('/{parents}', [ParentsController::class, 'show'])->name('parents.show');
+    Route::get('/parents/{id}/edit', [ParentsController::class, 'edit'])->name('parents.edit');
+    Route::put('/parents/{id}', [ParentsController::class, 'update'])->name('parents.update');
+    Route::delete('/parents{id}', [ParentsController::class, 'destroy'])->name('parents.destroy');
 
     Route::get('/followUp', [FollowUpController::class, 'index'])->name('followUp.index');
     Route::get('/followUp/create', [FollowUpController::class, 'create'])->name('followUp.create');

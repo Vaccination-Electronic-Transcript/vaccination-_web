@@ -2,71 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Parents;
+use App\Models\JobType;
 use Illuminate\Http\Request;
-use App\Models\Parentss;
 
 class ParentsController extends Controller
 {
-    // Display a listing of the parentss.
     public function index()
     {
-        $parents = Parentss::all(); // Retrieve all parents from the database
-        return view('parents.index', compact('parents'));
+        $jobTypes = JobType::all();
+        return view('parents.index', compact('jobTypes'));
     }
 
-    // Show the form for creating a new parentss.
     public function create()
     {
-        return view('parents.create');
+        $jobTypes = JobType::all();
+        return view('parents.create', compact('jobTypes'));
     }
-
-    // Store a newly created parentss in storage.
     public function store(Request $request)
     {
-        $request->validate([
-            'SSN' => 'required|unique:parentss',
-            'firstname' => 'required',
-            'lastname' => 'required',
+        $validatedData = $request->validate([
+            'ssn' => 'required',
+            'id' => 'required',
+            'name' => 'required',
             'phone' => 'required',
+            'gender' => 'required',
+            'job_id' => 'required',
         ]);
 
-        parentss::create($request->all());
+        Parents::create($validatedData);
 
-        return redirect()->route('parentss.index')
-            ->with('success', 'parentss created successfully.');
+        return redirect()->route('parents.index')
+            ->with('success', 'Parent created successfully.');
     }
 
-    // Show the form for editing the specified parentss.
-    public function edit($id)
+    public function show(Parents $parents)
     {
-        $parentss = parentss::findOrFail($id);
-        return view('parentss.edit', compact('parentss'));
+        return view('parents.show', compact('parents'));
     }
 
-    // Update the specified parentss in storage.
-    public function update(Request $request, $id)
+    public function edit(Parents $parents)
     {
-        $request->validate([
-            'SSN' => 'required|unique:parentss,SSN,'.$id,
-            'firstname' => 'required',
-            'lastname' => 'required',
+        return view('parents.edit', compact('parents'));
+    }
+
+    public function update(Request $request, Parents $parents)
+    {
+        $validatedData = $request->validate([
+            'ssn' => 'required',
+            'id' => 'required',
+            'name' => 'required',
             'phone' => 'required',
+            'gender' => 'required',
+            'job_id' => 'required',
         ]);
 
-        $parentss = parentss::findOrFail($id);
-        $parentss->update($request->all());
+        $parents->update($validatedData);
 
-        return redirect()->route('parentss.index')
-            ->with('success', 'parentss updated successfully');
+        return redirect()->route('parents.index')
+            ->with('success', 'Parent updated successfully.');
     }
 
-    // Remove the specified parentss from storage.
-    public function destroy($id)
+    public function destroy(Parents $parents)
     {
-        $parentss = parentss::findOrFail($id);
-        $parentss->delete();
+        $parents->delete();
 
-        return redirect()->route('parentss.index')
-            ->with('success', 'parentss deleted successfully');
+        return redirect()->route('parents.index')
+            ->with('success', 'Parent deleted successfully.');
     }
 }

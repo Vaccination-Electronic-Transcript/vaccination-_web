@@ -5,15 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Parentss extends Model
+class jobtype extends Model
 {
     use HasFactory;
-    protected $table='parentss';
-    protected $primarykey='ssn';
+    protected $table = 'job_type';
     protected $fillable = [
-        'SSN',
-        'Firstname',
-        'Lastname',
-        'phone',
+        'job_id',
+        'qualification'
+
     ];
 }

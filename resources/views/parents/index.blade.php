@@ -1,44 +1,49 @@
-<!-- resources/views/parents/index.blade.php -->
-
-@extends('parents.layout') <!-- Assuming you have a layout file -->
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>All Parents</h1>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>SSN</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Phone</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($parents as $parent)
-                            <tr>
-                                <td>{{ $parent->id }}</td>
-                                <td>{{ $parent->SSN }}</td>
-                                <td>{{ $parent->firstname }}</td>
-                                <td>{{ $parent->lastname }}</td>
-                                <td>{{ $parent->phone }}</td>
-                                <td>
-                                    <a href="{{ route('parents.edit', $parent->id) }}" class="btn btn-primary">Edit</a>
-                                    <form action="{{ route('parents.destroy', $parent->id) }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-                <a href="{{ route('parents.create') }}" class="btn btn-success">Create Parent</a>
+                <div class="card">
+                    <div class="card-header">Parents</div>
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>SSN</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Gender</th>
+                                    <th>Job ID</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($parents as $parent)
+                                    <tr>
+                                        <td>{{ $parent->ssn }}</td>
+                                        <td>{{ $parent->id }}</td>
+                                        <td>{{ $parent->name }}</td>
+                                        <td>{{ $parent->phone }}</td>
+                                        <td>{{ $parent->gender }}</td>
+                                        <td>{{ $parent->job_id }}</td>
+                                        <td>
+                                            <a href="{{ route('parents.show', $parent->id) }}" class="btn btn-primary">View</a>
+                                            <a href="{{ route('parents.edit', $parent->id) }}" class="btn btn-success">Edit</a>
+                                            <form action="{{ route('parents.destroy', $parent->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this parent?')">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

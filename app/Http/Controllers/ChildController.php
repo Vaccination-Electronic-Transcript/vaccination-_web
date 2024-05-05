@@ -36,7 +36,7 @@ class ChildController extends Controller
         $newChild = Child::create($request->all());
 
         // Redirect the user to the index page after successful creation
-        return redirect()->route('child.index');
+        return redirect()->route('parent.create');
 
     }
 
@@ -55,7 +55,7 @@ class ChildController extends Controller
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'DOB' => 'required|date',
-            'gender' => 'required|in:male,female', 
+            'gender' => 'required|in:male,female',
             'weight' => 'required|numeric',
             'height' => 'required|numeric',
             'address' => 'nullable|string',
