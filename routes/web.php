@@ -6,9 +6,10 @@ use App\Http\Controllers\ChildController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Controllers\FollowUpController;
+use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\HomeController; //
 use App\Http\Controllers\adminauth\AuthenticatedSessionController;
-
+use app\Models\jobtype;
 
 
 /*
@@ -25,11 +26,19 @@ use App\Http\Controllers\adminauth\AuthenticatedSessionController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/parent-form', function () {
+    // Assuming you are passing jobTypes to the view, adjust as per your setup
+    $jobTypes = JobType::all();
+    return view('parent-form', compact('jobTypes'));
+});
 //Route::get('/vaccine', [VaccineController::class, 'index'])->name('Vaccine.index');
 Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::get('/child', [ChildController::class, 'index'])->name('child.index');
     Route::get('/parents', [ParentsController::class, 'index'])->name('parents.index');
     Route::get('/vaccine', [VaccineController::class, 'index'])->name('vaccine.index');
+    Route::get('/followUp', [FollowUpController::class, 'index'])->name('followUp.index');
+
+
 
     Route::get('/child/create', [ChildController::class, 'create'])->name('Child.create');
     Route::post('/child', [ChildController::class, 'store'])->name('Child.store');
@@ -45,14 +54,15 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::put('/vaccine/{id}', [VaccineController::class, 'update'])->name('vaccine.update');
     Route::delete('/vaccine/{id}', [VaccineController::class, 'destroy'])->name('vaccine.destroy');
 
-    Route::post('/parents/create', [ParentsController::class, 'create'])->name('parents.create');
+    Route::get('/parents/create', [ParentsController::class, 'create'])->name('parents.create');
     Route::post('/parents', [ParentsController::class, 'store'])->name('parents.store');
-    Route::get('/{parents}', [ParentsController::class, 'show'])->name('parents.show');
+/*     Route::get('/{parents}', [ParentsController::class, 'show'])->name('parents.show');
+ */    Route::get('/parents/{ssn}', [ParentsController::class, 'show'])->name('parents.show');
+
     Route::get('/parents/{id}/edit', [ParentsController::class, 'edit'])->name('parents.edit');
     Route::put('/parents/{id}', [ParentsController::class, 'update'])->name('parents.update');
-    Route::delete('/parents{id}', [ParentsController::class, 'destroy'])->name('parents.destroy');
+    Route::delete('/parents/{id}', [ParentsController::class, 'destroy'])->name('parents.destroy');
 
-    Route::get('/followUp', [FollowUpController::class, 'index'])->name('followUp.index');
     Route::get('/followUp/create', [FollowUpController::class, 'create'])->name('followUp.create');
     Route::post('/followUp', [FollowUpController::class, 'store'])->name('followUp.store');
     Route::get('/followUp/{followUp}', [FollowUpController::class, 'show'])->name('followUp.show');
@@ -69,14 +79,14 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
 });
 //use App\Http\Controllers\ParentController;
 
-Route::namespace('App\Http\Controllers\ParentsController')->group(function () {
+/* Route::namespace('App\Http\Controllers\ParentsController')->group(function () {
     //Route::get('/parents', [ParentsController::class, 'index'])->name('parents.index');
     Route::get('/parents/create', [ParentsController::class, 'create'])->name('parents.create');
     //Route::post('/parents', [ParentsController::class, 'store'])->name('parents.store');
     Route::get('/parents/{id}/edit', [ParentsController::class, 'edit'])->name('parents.edit');
     Route::put('/parents/{id}', [ParentsController::class, 'update'])->name('parents.update');
     Route::delete('/parents/{id}', [ParentsController::class, 'destroy'])->name('parents.destroy');
-});
+}); */
 
 
 Route::get('/dashboard', function () {

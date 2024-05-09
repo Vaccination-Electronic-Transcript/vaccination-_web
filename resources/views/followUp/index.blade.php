@@ -12,7 +12,7 @@
     <div class="container">
         <div class="logo">
             <img src="{{ asset('images/injection-15.png') }}" alt="Vaccination Logo">
-            <h1>vaccination</h1>
+            <h1>follow Up</h1>
         </div>
         <div class="follow-up-list">
             <h1>Follow-up List</h1>

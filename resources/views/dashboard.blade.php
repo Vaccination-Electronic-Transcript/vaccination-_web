@@ -19,8 +19,9 @@
 
 
         <a class="nav-link text-primary" href="{{ route('child.index') }}">Add Child</a>
-        <a href="{{ route('vaccine.index') }}">Vaccine Index</a>
-        <a href="{{ route('followUp.index') }}" class="btn btn-success btn-sm" title="Go to Follow-up">Go to Follow-up</a>
+        <a class="nav-link text-primary" href="{{ route('vaccine.index') }}">Add vaccine</a>
+        <a class="nav-link text-primary" href="{{ route('followUp.index') }}">Add followUp</a>
+        <a class="nav-link text-primary" href="{{ route('parents.index') }}">Add parent</a>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

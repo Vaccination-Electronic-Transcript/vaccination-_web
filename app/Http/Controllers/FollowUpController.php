@@ -20,11 +20,6 @@ class FollowUpController extends Controller
         return view('followUp.index', compact('children', 'vaccines', 'followUps'));
     }
 
-
-
-
-
-
     public function create()
     {
     $vaccines = Vaccine::all(); // Fetch all vaccines
@@ -48,7 +43,7 @@ public function store(Request $request)
     $newFollow = FollowUp::create($data);
 
     // Redirect the user to the index page after successful creation
-    return redirect()->route('followUp.index');
+    return redirect()->route('dashboard');
 
 }
 

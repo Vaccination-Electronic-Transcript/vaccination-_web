@@ -26,6 +26,10 @@
 
             <form id="followUpForm" method="post" action="{{ route('followUp.store') }}">
                 @csrf
+                <div>
+                            <label for="childinfo">Child information</label>
+                </div>
+
                 <!-- Select Child SSN -->
                 <label for="childSSN">Child SSN</label>
                 <select name="childSSN" id="childSSN" class="form-control" required>
@@ -68,7 +72,7 @@
                 </select>
 
                 <div class="form-group mb-3">
-                    <button type="button" onclick="window.location.href = '{{ route('followUp.index') }}';" class="btn btn-secondary">Back</button>
+                    <button type="button" onclick="window.location.href = '{{ route('dashboard') }}';" class="btn btn-secondary">Back</button>
                     <button type="submit" class="btn btn-success">Save Follow-up</button>
                 </div>
             </form>
@@ -77,3 +81,80 @@
 </body>
 
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

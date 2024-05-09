@@ -21,62 +21,65 @@
                 @csrf
                 <div class="form-group mb-3">
                     <label for="ssn">SSN</label>
-                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
+                    <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN" required>
                 </div>
 
                 <div class="form-group mb-3">
                     <label for="first_name">First Name</label>
-                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="last_name">Last Name</label>
-                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name">
+                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required>
                 </div>
                 <div class="form-group mb-3">
                     <label for="phone">Phone</label>
-                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" required>
                 </div>
-                <div class="form-group mb-3">
+                <div class="form-group-select mb-3">
                     <label for="gender">Gender</label>
-                    <select class="form-control" id="gender" name="gender">
-                        <option selected>Choose...</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
+                    <div class="select-wrapper">
+                        <select id="gender" name="gender">
+                            <option selected disabled>Choose...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                    </div>
                 </div>
-                <div class="form-group mb-3">
+
+                <div class="form-group-select mb-3">
                     <label for="job_id">Job Type</label>
-                    <select class="form-control" id="job_id" name="job_id">
-                        <option selected>Choose...</option>
+                    <div class="select-wrapper">
+
+                    <select id="job_id" name="job_id" required>
+                        <option value="" selected disabled>Select Job Type</option>
                         @foreach($jobTypes as $jobType)
-                            <option value="{{ $jobType->id }}">{{ $jobType->qualification }}</option>
+                            <option value="{{ $jobType->job_id }}">{{ $jobType->qualification }}</option>
                         @endforeach
                     </select>
                 </div>
 
-                <div class="form-group mb-3">
-                    <button type="button" onclick="validateAndRedirect();" class="btn btn-success">Next</button>
+                <div class="buttons">
+                    <button type="submit" class="next-button">Submit</button>
                 </div>
             </form>
+
+            @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </div>
-    </div>
-
-    <script>
-        function validateAndRedirect() {
-            // Perform client-side validation
-            var ssn = document.getElementById('ssn').value;
-            var first_name = document.getElementById('first_name').value;
-            var last_name = document.getElementById('last_name').value;
-            var phone = document.getElementById('phone').value;
-
-            if (!ssn || !first_name || !last_name || !phone) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            // If all fields are filled, redirect to the followUp.create route
-            window.location.href = '{{ route('followUp.create') }}';
-        }
-    </script>
 </body>
 </html>

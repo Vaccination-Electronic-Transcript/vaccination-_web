@@ -1,95 +1,152 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9fbff;
-  margin: 0;
-  padding: 0;
-}
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f9fbff;
+    margin: 0;
+    padding: 0;
+    }
 
-.container {
-  max-width: 800px;
-  margin: 100px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
-}
+    .container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.1);
+    }
 
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
 
-.logo img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
-}
+    .logo img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    }
 
-.logo h1 {
-  color: #1A7399;
-}
+    .logo h1 {
+    color: #1A7399;
+    }
 
-h2 {
-  color: #175A77FC;
-  text-align: center;
-  margin-bottom: 20px;
-}
+    h2 {
+    color: #175A77FC;
+    text-align: center;
+    margin-bottom: 20px;
+    }
 
-.form {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 56px;
-  justify-content: flex-start;
-}
+    .form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 56px;
+    justify-content: flex-start;
+    }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
+    .form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    }
 
-.qualifications {
-  align-self: flex-start;
-}
+    .qualifications {
+    align-self: flex-start;
+    }
 
-label{
-  color: #175A77FC;
-}
+    label{
+    color: #175A77FC;
+    }
 
-input[type="text"],
-input[type="tel"] {
-  width: 350px;
-  padding: 10px;
-  border: 1px solid #016071;
-  border-radius: 5px;
-  background-color: transparent;
-  outline: none;
-}
+    input[type="text"],
+    input[type="tel"] {
+    width: 350px;
+    padding: 10px;
+    border: 1px solid #016071;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    }
 
 
-select {
-  border: none;
-}
+    select {
+    border: none;
+    }
 
-button {
-  width: 150px;
-  padding: 12px;
-  background-color: #016071;
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-}
+    button {
+    width: 150px;
+    padding: 12px;
+    background-color: #016071;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    }
 
-p {
-  text-align: center;
-  margin-top: 20px;
-}
+    p {
+    text-align: center;
+    margin-top: 20px;
+    }
 
-.buttons {
-  display: flex;
-  justify-content: space-around;
-}
+    .buttons {
+    display: flex;
+    justify-content: space-around;
+    }
+    .back-button {
+        width: 150px;
+        padding: 12px;
+        background-color: #016071;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+    .back-button:hover {
+        background-color: #016071;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .form-group-select {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .select-wrapper {
+        position: relative;
+    }
+
+    .select-wrapper select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 50px;
+        background-color: #f2f2f2;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .select-arrow {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .select-arrow::after {
+        content: '\25BC';
+        font-size: 14px;
+    }
+
+    /* Additional styles for the dropdown options if needed */
+    .select-wrapper select option {
+        padding: 12px;
+        background-color: #f2f2f2;
+        color: #333;
+    }
+

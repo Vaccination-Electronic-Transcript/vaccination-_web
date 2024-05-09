@@ -26,7 +26,7 @@ class VaccineController extends Controller
             'name' => 'required',
             'dose' => 'required',
             'age' => 'required',
-            'quantity' => 'required|numeric|min:0|max:200',
+            'quantity' => 'required|min:0|max:200',
             'type' => 'required|in:Syrup,Injection',
         ]);
 

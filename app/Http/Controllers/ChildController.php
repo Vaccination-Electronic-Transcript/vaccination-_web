@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Child;
+use App\Models\Parents;
 
 class ChildController extends Controller
 {
@@ -18,27 +19,31 @@ class ChildController extends Controller
         return view('child.create');
 
     }
-    public function store(Request $request)
-    {
-        // Validate the incoming request data
-        $request->validate([
-            'childSSN' => 'required|numeric', // Add validation rules for childSSN
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'DOB' => 'required|date',
-            'gender' => 'required|in:male,female',
-            'weight' => 'required|numeric',
-            'height' => 'required|numeric',
-            'address' => 'nullable|string',
-        ]);
 
-        // Create a new child record with the validated data
-        $newChild = Child::create($request->all());
 
-        // Redirect the user to the index page after successful creation
-        return redirect()->route('parent.create');
+        // Create new Child instance and save data
 
-    }
+public function store(Request $request)
+{
+    $validatedData = $request->validate([
+        'childSSN' => 'required|numeric',
+        'first_name' => 'required|string',
+        'last_name' => 'required|string',
+        'DOB' => 'required|date',
+        'gender' => 'required|in:male,female',
+        'weight' => 'required|numeric',
+        'height' => 'required|numeric',
+        'address' => 'nullable|string',
+    ]);
+
+    // $child = new Child();
+    $child = new Child();
+        $child->fill($validatedData);
+        $child->save();
+
+        // Redirect to parents.create route
+        return redirect()->route('parents.create');
+}
 
     public function show($id){
         $child = Child::findOrFail($id); // Assuming you want to retrieve a specific child by ID
